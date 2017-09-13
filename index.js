@@ -97,7 +97,12 @@ const handleAll = (msg) => {
   else if (msg.left_chat_member) handleDelUser(msg)
   else if (msg.migrate_to_chat_id) handleMigrateGroup(msg)
   else if (msg.group_chat_created) handleNewGroup(msg)
-  else if (!msg.text && !msg.sticker && !msg.reply_to_message) console.log(msg)
+  else if (
+    !msg.text &&
+    !msg.sticker &&
+    !msg.reply_to_message &&
+    !msg.photo
+  ) console.log(msg)
 }
 
 TelegramBot.on('message', handleAll)
